@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://2xbm0ydo6jmk"]
+
+[ext_resource type="PackedScene" uid="uid://daheke8aurd3d" path="res://test/enemy.tscn" id="1_b0v12"]
+[ext_resource type="Script" path="res://test/test_scene.gd" id="1_mnhpc"]
+[ext_resource type="PackedScene" uid="uid://bo3dj7baprp51" path="res://test/enemy_with_health.tscn" id="3_u42u2"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_mnhpc")
+
+[node name="ShootPoint" type="Marker2D" parent="."]
+position = Vector2(87, 288)
+
+[node name="Enemy" parent="." instance=ExtResource("1_b0v12")]
+position = Vector2(911, 128)
+
+[node name="Reset" type="Button" parent="."]
+offset_left = 385.0
+offset_top = 22.0
+offset_right = 511.0
+offset_bottom = 100.0
+text = "RESET"
+
+[node name="EnemyWithHealth" parent="." instance=ExtResource("3_u42u2")]
+position = Vector2(920, 427)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 102.0
+offset_top = 16.0
+offset_right = 286.0
+offset_bottom = 122.0
+text = "Press \"left_click\" to shoot"
+
+[connection signal="pressed" from="Reset" to="." method="_on_button_2_pressed"]
